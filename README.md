@@ -5,14 +5,8 @@ A messaging component that consumes a message from a message channel and republi
 on a set of condition.
 
 - Message Router Types
-1) Payload Type Router
-Routes based on message type
-
-2) Header-Value Router
-Routes based on header Value
-
-3) Generic Router
-Routes based on custom logic
-
-4) Recipient List Router
-Routes to multiple channel
+- 
+1) Payload Type Router - Routes based on message type
+2) Header-Value Router - Routes based on header Value
+3) Generic Router - Routes based on custom logic
+4) Recipient List Router - Routes to multiple channel
