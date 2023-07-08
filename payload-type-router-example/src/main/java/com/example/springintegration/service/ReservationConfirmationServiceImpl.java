@@ -16,9 +16,12 @@ public class ReservationConfirmationServiceImpl implements ReservationConfirmati
     @ServiceActivator(inputChannel = "reservationConfirmationChannel")
     @Override
     public Message<String> processString(Message<ReservationConfirmation> reservationConfirmationMessage) {
+        System.out.println("------------");
         ReservationConfirmation reservationConfirmation = reservationConfirmationMessage.getPayload();
-        logger.info("ReservationConfirmation: reservationId={}, confirmationNumber={}",
+
+        logger.info("## ReservationConfirmation: reservationId={}, confirmationNumber={}",
                 reservationConfirmation.getReservationId(), reservationConfirmation.getConfirmationNumber());
+
         return MessageBuilder.withPayload("SUCCESS").build();
     }
 }

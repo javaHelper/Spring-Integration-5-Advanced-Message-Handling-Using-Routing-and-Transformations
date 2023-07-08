@@ -28,9 +28,12 @@ public class PayloadTypeRouterConfig {
         return new DirectChannel();
     }
 
+
     @Bean
+    // A Message Router that resolves the org.springframework.messaging.MessageChannel based on the Message's payload type.
     @ServiceActivator(inputChannel = "routerChannel")
     public PayloadTypeRouter payloadTypeRouter() {
+        // A Message Router that resolves the MessageChannel based on the Message's payload type.
         PayloadTypeRouter router = new PayloadTypeRouter();
         router.setChannelMapping(ReservationRecord.class.getName(), "reservationRecordChannel");
         router.setChannelMapping(ReservationConfirmation.class.getName(), "reservationConfirmationChannel");

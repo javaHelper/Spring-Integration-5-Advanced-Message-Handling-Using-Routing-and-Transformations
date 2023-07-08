@@ -15,8 +15,11 @@ public class ReservationRecordServiceImpl implements ReservationRecordService {
     @ServiceActivator(inputChannel = "reservationRecordChannel")
     @Override
     public Message<String> processReservationRecord(Message<ReservationRecord> reservationRecordMessage) {
+        System.out.println("===================");
         ReservationRecord reservationRecord = reservationRecordMessage.getPayload();
+
         logger.info("Reservation Record: id={}, name={}", reservationRecord.getId(), reservationRecord.getName());
+
         return MessageBuilder.withPayload("SUCCESS").build();
     }
 }

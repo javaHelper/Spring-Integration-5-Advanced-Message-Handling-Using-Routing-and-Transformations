@@ -21,13 +21,17 @@ public class ReservationServiceImpl implements ReservationService {
     public void addReservationRecord(String id, String name) {
         Message<String> reservationRecordMessage = gateway.routeMessage(
                 MessageBuilder.withPayload(new ReservationRecord(id, name)).build());
+
         logger.info("Received result from reservation record message: {}", reservationRecordMessage.getPayload());
     }
 
     @Override
     public void completeReservation(String reservationId, String confirmationNumber) {
+        ReservationConfirmation reservationConfirmation = new ReservationConfirmation(reservationId, confirmationNumber);
+
         Message<String> reservationConfirmationMessage = gateway.routeMessage(
-                MessageBuilder.withPayload(new ReservationConfirmation(reservationId, confirmationNumber)).build());
+                MessageBuilder.withPayload(reservationConfirmation).build());
+
         logger.info("Received result from reservation confirmation message: {}",
                 reservationConfirmationMessage.getPayload());
     }
