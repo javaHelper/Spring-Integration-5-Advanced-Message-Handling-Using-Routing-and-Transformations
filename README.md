@@ -9,3 +9,6 @@ on a set of condition.
 2) Header-Value Router - Routes based on header Value
 3) Generic Router - Routes based on custom logic
 4) Recipient List Router - Routes to multiple channel
+
+
+Done and dusted.
